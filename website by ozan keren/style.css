@@ -1,0 +1,160 @@
+
+/* Import Font Modern dari Google */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at top right, #1e293b, #0f172a);
+    color: #f8fafc;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- NAVIGATION BAR --- */
+ul {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 30px;
+    list-style: none;
+}
+
+li {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #94a3b8;
+    position: relative;
+}
+
+/* Garis bawah animasi */
+li::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: #38bdf8;
+    transition: width 0.3s ease;
+}
+
+li:hover {
+    color: #38bdf8;
+}
+
+li:hover::after {
+    width: 100%;
+}
+
+/* --- PESAN BOX --- */
+#pesan-box {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    /* Efek transisi halus saat teks muncul */
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- GALLERY GAMBAR --- */
+/* Menggunakan flexbox agar gambar sejajar di tengah */
+div:nth-of-type(3) { 
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 60px 20px;
+    flex-wrap: wrap;
+}
+
+img {
+    width: 320px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    filter: brightness(0.8) contrast(1.1);
+}
+
+img:hover {
+    transform: scale(1.05) rotate(2deg);
+    filter: brightness(1);
+    box-shadow: 0 30px 60px rgba(56, 189, 248, 0.2);
+    border: 1px solid rgba(56, 189, 248, 0.5);
+}
+
+/* --- FOOTER --- */
+h2 {
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 40px;
+    color: #475569;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* Jika ingin menghilangkan tulisan "di buat oleh orang keren", 
+   Hapus bagian h2::before di bawah ini 
+*/
+h2::before {
+    content: "";
+}
+
+/* Responsif untuk HP */
+@media (max-width: 600px) {
+    ul { gap: 20px; }
+    img { width: 100%; height: 300px; }
+}/* Latar belakang hitam transparan */
+.modal {
+  display: none; /* Sembunyi dulu */
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  backdrop-filter: blur(8px); /* Efek blur kaca */
+}
+
+/* Kotak putih/gelap di tengah */
+.modal-content {
+  background-color: #1e293b;
+  margin: 10% auto;
+  padding: 40px;
+  border: 1px solid #38bdf8;
+  width: 60%;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  animation: muncul 0.4s; /* Animasi biar halus */
+}
+
+@keyframes muncul {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Tombol Tutup (X) */
+.tutup {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.tutup:hover { color: #38bdf8; }
